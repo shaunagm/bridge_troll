@@ -18,7 +18,7 @@
   <tbody>
   <% @chapter.leaders.each do |leader|  %>
     <tr>
-      <td class="span1"><%= render 'shared/viewed_gravatars', :email => leader.email %></td>
+      <td class="col-md-1"><%= render 'shared/viewed_gravatars', :email => leader.email %></td>
       <td><%= leader.full_name %></td>
       <td><%= leader.email %></td>
       <td>
