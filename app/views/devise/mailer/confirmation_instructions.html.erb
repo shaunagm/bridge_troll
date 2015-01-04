@@ -1,7 +1,7 @@
 <div style="font-family: sans-serif;">
-  <h2>Welcome to Bridge Troll, <%= @resource.first_name %>!</h2>
+  <h2>Welcome to OpenHatch Events, <%= @resource.first_name %>!</h2>
 
-  <p>Click the link below to begin a magical journey to a RailsBridge workshop.</p>
+  <p>Click the link below to begin a magical journey to an open source workshop.</p>
 
   <p>
     <%= link_to confirmation_url(@resource, confirmation_token: @token) do %>
@@ -9,8 +9,4 @@
     <% end %>
   </p>
 
-  <p>
-    P.S. Once you're confirmed, go to the Account page to link to your Meetup account (if you have one).
-    This will import your RailsBridge attendance history.
-  </p>
 </div>

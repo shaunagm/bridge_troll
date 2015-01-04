@@ -7,7 +7,7 @@ class AdminMailer < ActionMailer::Base
     mail(
       to: 'info@bridgetroll.org',
       from: "info@bridgetroll.org",
-      subject: '[Bridge Troll] Group Email Test'
+      subject: '[OpenHatch Events] Group Email Test'
     ) do |format|
       format.html { render html: mail_content('group') }
     end
@@ -17,7 +17,7 @@ class AdminMailer < ActionMailer::Base
     mail(
       to: options[:to],
       from: "info@bridgetroll.org",
-      subject: '[Bridge Troll] Individual Email Test'
+      subject: '[OpenHatch Eventsl] Individual Email Test'
     ) do |format|
       format.html { render html: mail_content('individual') }
     end
@@ -29,7 +29,7 @@ class AdminMailer < ActionMailer::Base
     <<-EOT.strip_heredoc
       Hey there!
 
-      This is a test message from bridgetroll.org!
+      This is a test message from OpenHatch Events!
 
       If you received it, it means that #{type} emails can probably be sent successfully from #{Rails.configuration.action_mailer.default_url_options[:host]}
     EOT

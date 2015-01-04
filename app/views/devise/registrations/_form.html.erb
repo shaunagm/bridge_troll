@@ -31,7 +31,7 @@
 
       <div class='form-group'>
         <%= f.label :allow_event_email do %>
-          <%= f.check_box :allow_event_email %> Allow Bridge Troll to send you an email when a new event is posted in one of those chapters
+          <%= f.check_box :allow_event_email %> Allow OpenHatch Events to send you an email when a new event is posted in one of those chapters
         <% end %>
       </div>
 
@@ -63,7 +63,7 @@
       <% end %>
 
       <% if is_registered && f.object.encrypted_password.blank? %>
-        <span class="help-block">You don't currently have a Bridge Troll password set up, because you use <%= f.object.authentications.map(&:provider).join('/') %> to log in. That's fine with us, but if you want to set up a password as well, you can do it here:</span>
+        <span class="help-block">You don't currently have an OpenHatch Events password set up, because you use <%= f.object.authentications.map(&:provider).join('/') %> to log in. That's fine with us, but if you want to set up a password as well, you can do it here:</span>
       <% end %>
 
       <%= f.input :password %>
