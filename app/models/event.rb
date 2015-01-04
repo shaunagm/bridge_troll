@@ -312,22 +312,21 @@ class Event < ActiveRecord::Base
 
 <h2>Transportation and Parking</h2>
 
-<h2>Food and Drinks</h2>
-
-<h2>Childcare</h2>
-
-<h2>Afterparty</h2>
+<h2>Preparing for the Event</h2>
   END
 
   DEFAULT_STUDENT_DETAILS = <<-END
-All students need to bring their own laptop and powercord.
+All attendees should bring their own laptop and powercord. If you can't, please let us know ahead of time.
 
-Since bandwidth is usually at a premium at the Installfest, please download RailsInstaller (for PCs and most Mac installations) or XCode (if you're going that route).
+Want to get started ahead of time?  You can <a href="bit.ly/laptop-setup">set up your laptop</a>, or you can <a href="http://discourse.openhatch.org/c/volunteers/project-maintainers">talk to maintainers of recommended projects</a>, or you can <a href="https://openhatch.readthedocs.org/en/latest/community/contact.html">say hello on IRC</a> -- or you could do all three!  (This is all entirely optional.)
 
-You can find more information on what to download by getting started with the Installfest instructions: <a href="http://docs.railsbridge.org/installfest">http://docs.railsbridge.org/installfest</a>
+Please let us know as soon as possible if you will not be able to attend the workshop, so that another attendee can take your place.
   END
 
   DEFAULT_VOLUNTEER_DETAILS = <<-END
-Be sure to review the curriculum before the workshop. We have several curricula available at <a href="http://docs.railsbridge.org">http://docs.railsbridge.org</a>.
+You should go ahead and join the discussion <a href="http://discourse.openhatch.org/c/chapters">on our forum</a>! Please introduce yourself in the event's mentor thread. You are welcome to get more involved with the organizing as well.
+
+OpenHatch offers online trainings for mentors. They are optional, but a lot of fun! To sign up, check out <a href="http://discourse.openhatch.org/t/mentor-trainings/33/2">this forum thread</a>.</p>
+
   END
 end
