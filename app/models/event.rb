@@ -318,7 +318,7 @@ class Event < ActiveRecord::Base
   DEFAULT_STUDENT_DETAILS = <<-END
 All attendees should bring their own laptop and powercord. If you can't, please let us know ahead of time.
 
-Want to get started ahead of time?  You can <a href="bit.ly/laptop-setup">set up your laptop</a>, or you can <a href="http://discourse.openhatch.org/c/volunteers/project-maintainers">talk to maintainers of recommended projects</a>, or you can <a href="https://openhatch.readthedocs.org/en/latest/community/contact.html">say hello on IRC</a> -- or you could do all three!  (This is all entirely optional.)
+Want to get started ahead of time?  You can <a href="http://bit.ly/laptop-setup">set up your laptop</a>, or you can <a href="http://discourse.openhatch.org/c/volunteers/project-maintainers">talk to maintainers of recommended projects</a>, or you can <a href="https://openhatch.readthedocs.org/en/latest/community/contact.html">say hello on IRC</a> -- or you could do all three!  (This is all entirely optional.)
 
 Please let us know as soon as possible if you will not be able to attend the workshop, so that another attendee can take your place.
   END
