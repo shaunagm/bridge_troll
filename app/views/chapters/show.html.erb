@@ -1,5 +1,11 @@
 <%= content_for(:header_text, @chapter.name) %>
 
+<h2>About this Chapter</h2>
+
+<% if @chapter.chapter_description? %>
+  <%= @chapter.chapter_description %>
+<% end %>
+
 <% if @chapter.leaders.present? %>
   <h2>Chapter Leaders</h2>
     <ul>

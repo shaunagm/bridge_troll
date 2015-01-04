@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211050151) do
+ActiveRecord::Schema.define(version: 20150104034118) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
@@ -28,9 +28,10 @@ ActiveRecord::Schema.define(version: 20141211050151) do
 
   create_table "chapters", force: true do |t|
     t.string   "name"
-    t.integer  "locations_count", default: 0
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "locations_count",     default: 0
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "chapter_description"
   end
 
   create_table "chapters_users", id: false, force: true do |t|

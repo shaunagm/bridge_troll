@@ -1,5 +1,5 @@
 class Chapter < ActiveRecord::Base
-  PERMITTED_ATTRIBUTES = [:name]
+  PERMITTED_ATTRIBUTES = [:name, :chapter_description]
 
   has_many :locations
   has_many :events, -> { where published: true }, through: :locations
@@ -9,6 +9,7 @@ class Chapter < ActiveRecord::Base
 
   validates_presence_of :name
   validates_uniqueness_of :name
+  validates_presence_of :chapter_description
 
   def has_leader?(user)
     return false unless user

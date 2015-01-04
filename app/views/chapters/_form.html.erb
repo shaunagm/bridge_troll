@@ -5,6 +5,9 @@
 
       <%= f.input :name, required: false %>
 
+<p>Please include come information about the chapter, such as a link to the chapter's <a href="http://discourse.openhatch.org/c/chapters">section on our forums</a>.</p>
+      <%= f.text_area :chapter_description, required: false, class: 'form-control' %>
+
       <div class="actions">
         <%= f.submit class: 'btn btn-submit' %>
       </div>
