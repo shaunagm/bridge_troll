@@ -168,27 +168,6 @@ describe 'creating or editing an rsvp' do
         page.should_not have_content no_preference_text
       end
 
-      describe "plus-one host toggle" do
-        let(:plus_one_host_text) { "If you are not a member of this workshop's target demographic" }
-
-        context "when enabled" do
-          it "should ask for the name of the person's host (if they are a plus-one)" do
-            visit learn_new_event_rsvp_path(@event)
-            page.should have_content plus_one_host_text
-          end
-        end
-
-        context "when disabled" do
-          before do
-            @event.update_attribute(:plus_one_host_toggle, false)
-          end
-
-          it "should not show the plus-one host form" do
-            visit learn_new_event_rsvp_path(@event)
-            page.should_not have_content plus_one_host_text
-          end
-        end
-      end
     end
   end
 
