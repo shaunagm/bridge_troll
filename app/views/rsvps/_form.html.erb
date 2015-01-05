@@ -7,14 +7,10 @@
     <%= render 'shared/model_error_messages', model: @rsvp %>
 
     <% if @rsvp.role_student? %>
-      <div class="field">
-        <h2>Operating System</h2>
-        <%= f.association :operating_system, collection: OperatingSystem.all, label: false, label_method: :title, as: :radio_buttons %>
-      </div>
 
       <div class="field">
-        <h2>Experience</h2>
-        <p>Choose the experience level below that best describes you. This will help us plan the workshop and make sure we're meeting everyone's
+	<p class="question">How familiar are you with open source?</p>
+        <p>This questions helps us plan the workshop and make sure we're meeting everyone's
 needs. Don't worry too much about picking the right level - you'll be able to participate in any part of the workshop that you want to.</p>
         </p>
         <%= render partial: 'rsvps/class_levels', locals: {
@@ -24,16 +20,47 @@ needs. Don't worry too much about picking the right level - you'll be able to pa
         } %>
       </div>
 
+      <div class="field question">
+        <%= f.input :potential_projects, as: :text, label: "Are there any open source projects you're interested in working on?" %>
+      </div>
+
+      <div class="field question">
+        <%= f.check_box :preevent_contact %> I would like to be introduced to open source mentors and projects before the event.
+      </div>
+
     <% end %>
 
     <% if @rsvp.role_volunteer? %>
-      <%= f.input :subject_experience, as: :text, label: "What's your experience with this workshop's subject matter?", class: "question", input_html: {
+	<p class="question">Tell us about your experience with open source.</p>
+      <%= f.input :subject_experience, as: :text, label: "This can be as a professional, hobbyist or student, and can encompass all kind of contributions, not just technical ones.", class: "question", input_html: {
         maxlength: Rsvp::MAX_EXPERIENCE_LENGTH,
         rows: 3,
       } %>
 
-      <% unless @rsvp.event.course.blank? %>
-        <h2>Volunteer Preferences</h2>
+	<div class="field checkbox">
+ 		<%= f.label :availability, class: 'checkbox question' do %>
+        		<%= f.check_box :availability %> Will you be available for the full event?
+      		<% end %>
+    	</div>
+
+        <div class="field question">
+            <%= f.input :availability_info, as: :text, label: "If you will not be available for the full event, please tell us about your scheduling constraints." %>
+    	</div>
+
+        <div class="field question">
+        	<%= f.input :volunteer_projects, as: :text, label: "Are there any particular open source projects you'd like to help attendees contribute to?" %>
+        </div>
+
+	<div class="field checkbox">
+ 		<%= f.label :mentor_training, class: 'checkbox question' do %>
+        		<%= f.check_box :volunteer_training %> OpenHatch offers optional, online mentor trainings. Would you like to participate? 
+      		<% end %>
+		<p>(To sign up for trainings, you'll need to follow <a href="http://discourse.openhatch.org/t/mentor-trainings/33">this forum thread</a>.)</p>
+    	</div>
+
+     <% unless @rsvp.event.course.blank? %>
+
+    <div class="field<%= ' hidden' %>">
         <p class="question">Would you prefer to teach or TA? (Checking neither means you'd prefer to do something else entirely)</p>
         <div class="checkbox">
           <%= f.label :teaching, class: 'checkbox' do %>
@@ -62,6 +89,7 @@ needs. Don't worry too much about picking the right level - you'll be able to pa
             show_no_preference: true
           } %>
         </div>
+	</div>
       <% end %>
     <% end %>
 
@@ -78,9 +106,18 @@ needs. Don't worry too much about picking the right level - you'll be able to pa
                                    }) %>
     <% end %>
 
+
     <h2>About You</h2>
+
+    <% if @rsvp.role_student? %>
+      <div class="field">
+	<p class="question">What operating system do you use?</p>
+        <%= f.association :operating_system, collection: OperatingSystem.all, label: false, label_method: :title, as: :radio_buttons %>
+      </div>
+    <% end %>
+
     <div class="field question">
-      <%= f.input :job_details, as: :text, label: "What's your job? (i.e. Accountant, Full-Time Parent, Student, Job-Hunter, Horse Whisperer)", input_html: {
+      <%= f.input :job_details, as: :text, label: "What do you do? If you're a student, tell us about your year, major, and other interests. If you're not a student, tell us about your job and/or goals.", input_html: {
         rows: 1,
         maxlength: Rsvp::MAX_EXPERIENCE_LENGTH
       } %>
@@ -97,25 +134,24 @@ needs. Don't worry too much about picking the right level - you'll be able to pa
       <%= render partial: 'rsvps/dietary_restrictions', locals: {f: f} %>
     </div>
 
-    <div class="field question">
-      <%= f.input :needs_childcare, as: :boolean, label: 'Do you need childcare?' %>
-    </div>
-
-    <div class="field<%= ' hidden' unless f.object.needs_childcare? %>">
-      <%= f.input :childcare_info, label: "Please list your childrens' names and ages.", input_html: {rows: 3} %>
-    </div>
-
     <% if @event.location %>
       <div class="field question">
         <div class="form-group boolean optional affiliate_with_chapter">
           <div class="checkbox">
             <%= label_tag :affiliate_with_chapter do %>
-              <%= check_box_tag :affiliate_with_chapter, 1, current_user.chapters.include?(@event.chapter) %> I want to be notified of future RailsBridge events in the "<%= @event.chapter.name %>" chapter.
+              <%= check_box_tag :affiliate_with_chapter, 1, current_user.chapters.include?(@event.chapter) %> I want to be notified of future OpenHatch events in the "<%= @event.chapter.name %>" chapter.
             <% end %>
             <small>(Full email preferences are available <%= link_to 'on your User Account', edit_user_registration_path %>)</small>
           </div>
         </div>
       </div>
+
+    <div class="field<%= ' hidden' %>">
+      <%= f.label :needs_childcare, class: 'checkbox question' do %>
+        <%= f.check_box :needs_childcare %> Do you need childcare?
+      <% end %>
+    </div>
+
     <% end %>
 
    <% if @rsvp.new_record? %>

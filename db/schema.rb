@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150104034118) do
+ActiveRecord::Schema.define(version: 20150105204913) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
@@ -192,6 +192,12 @@ ActiveRecord::Schema.define(version: 20150104034118) do
     t.integer  "section_id"
     t.boolean  "checkiner",                           default: false
     t.text     "plus_one_host"
+    t.boolean  "preevent_contact"
+    t.string   "potential_projects"
+    t.boolean  "availability"
+    t.string   "availability_info"
+    t.string   "volunteer_training"
+    t.string   "volunteer_projects"
   end
 
   add_index "rsvps", ["user_id", "event_id", "user_type"], name: "index_rsvps_on_user_id_and_event_id_and_event_type", unique: true
