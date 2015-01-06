@@ -1,24 +1,28 @@
 <%= content_for(:header_text, @chapter.name) %>
 
-<h2>About this Chapter</h2>
+<div class="field">
+	<h2>About this Chapter</h2>
 
-<% if @chapter.chapter_description? %>
-  <%= @chapter.chapter_description %>
-<% end %>
+	<% if @chapter.chapter_description? %>
+  		<%= @chapter.chapter_description.html_safe %>
+	<% end %>
+</div>
 
-<% if @chapter.leaders.present? %>
-  <h2>Chapter Leaders</h2>
-    <ul>
-    <% @chapter.leaders.each do |leader| %>
-      <li><%= link_to leader.full_name, user_profile_path(leader) %></li>
-    <% end %>
-    </ul>
-<% end %>
+<div class="field">
+	<h2>Chapter Leaders</h2>
+    	<% if @chapter.leaders.present? %>
+    		<ul>
+    		<% @chapter.leaders.each do |leader| %>
+     			<li><%= link_to leader.full_name, user_profile_path(leader) %></li>
+    		<% end %>
+   		</ul>
+	<% end %>
+</div>
 
-<% if @chapter.has_leader?(current_user) %>
-  <%= link_to 'Edit Chapter Leaders', chapter_chapter_leaderships_path(@chapter), class: "btn mb-20" %>
-
-  <h2>Organizers</h2>
+<div class="field">
+	<% if @chapter.has_leader?(current_user) %>
+  		<%= link_to 'Edit Chapter Leaders', chapter_chapter_leaderships_path(@chapter), class: "btn mb-20" %>
+		<h2>Organizers</h2>
   <table class="datatable-sorted table table-striped table-bordered table-condensed responsive-table">
     <thead>
     <tr>
@@ -38,12 +42,17 @@
     </tbody>
   </table>
 <% end %>
+</div>
 
-<h2>Events</h2>
-<%= render 'shared/events_table', events: @chapter.events %>
+<div class="field">
+	<h2>Events</h2>
+	<%= render 'shared/events_table', events: @chapter.events %>
+</div>
 
-<h2>Locations</h2>
-<%= render 'shared/locations_table', locations: @chapter.locations %>
+<div class="field">
+	<h2>Locations</h2>
+	<%= render 'shared/locations_table', locations: @chapter.locations %>
+</div>
 
 <%= render 'shared/actions', links: [
   ['Edit', edit_chapter_path(@chapter)],
