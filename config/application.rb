@@ -23,7 +23,7 @@ module Bridgetroll
     # config.i18n.default_locale = :de
 
     # set default from address across
-    ActionMailer::Base.default :from => 'RailsBridge <troll@bridgetroll.org>'
+    ActionMailer::Base.default :from => 'OpenHatch Events Website <noreply@openhatch.org>'
 
     config.i18n.enforce_available_locales = false
   end

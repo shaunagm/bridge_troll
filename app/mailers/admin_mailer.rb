@@ -5,8 +5,8 @@ class AdminMailer < ActionMailer::Base
     }.to_json
 
     mail(
-      to: 'info@bridgetroll.org',
-      from: "info@bridgetroll.org",
+      to: 'noreply@openhatch.org',
+      from: "noreply@openhatch.org",
       subject: '[OpenHatch Events] Group Email Test'
     ) do |format|
       format.html { render html: mail_content('group') }
@@ -16,7 +16,7 @@ class AdminMailer < ActionMailer::Base
   def test_individual_mail(options)
     mail(
       to: options[:to],
-      from: "info@bridgetroll.org",
+      from: "noreply@openhatch.org",
       subject: '[OpenHatch Eventsl] Individual Email Test'
     ) do |format|
       format.html { render html: mail_content('individual') }

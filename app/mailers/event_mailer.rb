@@ -16,7 +16,7 @@ class EventMailer < ActionMailer::Base
     @body = options[:body]
 
     mail(
-      to: 'info@bridgetroll.org', # supposedly required even with X-SMTPAPI
+      to: 'noreply@openhatch.org', # supposedly required even with X-SMTPAPI
       from: "#{@sender.full_name} <#{@sender.email}>",
       subject: options[:subject]
     )
@@ -30,7 +30,7 @@ class EventMailer < ActionMailer::Base
     }.to_json
 
     mail(
-      to: 'info@bridgetroll.org',
+      to: 'noreply@openhatch.org',
       subject: "OpenHatch event #{@event.published? ? 'created' : 'awaits approval'}: '#{@event.title}' by #{@event.organizers.first.full_name}"
     )
   end
@@ -45,7 +45,7 @@ class EventMailer < ActionMailer::Base
     }.to_json
 
     mail(
-      to: 'info@bridgetroll.org',
+      to: 'noreply@openhatch.org',
       subject: "[#{@chapter.name}] New event posted: '#{@event.title}'"
     )
   end
