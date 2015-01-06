@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20150106020958) do
     t.integer  "locations_count",     default: 0
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
-    t.string   "chapter_description", default: ""
+    t.text   "chapter_description", default: ""
   end
 
   create_table "chapters_users", id: false, force: true do |t|
@@ -193,11 +193,11 @@ ActiveRecord::Schema.define(version: 20150106020958) do
     t.boolean  "checkiner",                           default: false
     t.text     "plus_one_host"
     t.boolean  "preevent_contact"
-    t.string   "potential_projects"
+    t.text     "potential_projects"
     t.boolean  "availability"
-    t.string   "availability_info"
+    t.text     "availability_info"
     t.string   "volunteer_training"
-    t.string   "volunteer_projects"
+    t.text     "volunteer_projects"
     t.string   "activity_intro"
     t.string   "activity_tools"
     t.string   "activity_git"
