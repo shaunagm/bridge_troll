@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150105204913) do
+ActiveRecord::Schema.define(version: 20150106020958) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(version: 20150105204913) do
   create_table "chapters", force: true do |t|
     t.string   "name"
     t.integer  "locations_count",     default: 0
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.string   "chapter_description"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "chapter_description", default: ""
   end
 
   create_table "chapters_users", id: false, force: true do |t|
@@ -198,6 +198,11 @@ ActiveRecord::Schema.define(version: 20150105204913) do
     t.string   "availability_info"
     t.string   "volunteer_training"
     t.string   "volunteer_projects"
+    t.string   "activity_intro"
+    t.string   "activity_tools"
+    t.string   "activity_git"
+    t.string   "activity_panel"
+    t.string   "activity_workshop"
   end
 
   add_index "rsvps", ["user_id", "event_id", "user_type"], name: "index_rsvps_on_user_id_and_event_id_and_event_type", unique: true

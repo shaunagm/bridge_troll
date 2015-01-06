@@ -18,50 +18,82 @@
 } %>
 </section>
 
-<% if @rsvps.empty? %>
-  <p>No one is coming to this workshop yet. ;_;</p>
+<h2>Mentor RSVP Details</h2>
+<% if @event.volunteer_rsvps.empty? %>
+	<p>There are no mentors signed up yet.</p>
 <% else %>
   <table class="datatable table table-striped table-bordered table-condensed attendees responsive-table">
     <thead>
       <tr>
-	<!-- Fields for all -->
         <th class='attendee-name'>Name</th>
-        <th class='attendee-role'>Attending As</th>
-        <th class='attendee-dietary-info'>Dietary Info</th>
         <th class='attendee-job-details'>Details</th>
         <th class='attendee-gender'>Gender</th>
-	<!-- Student only fields -->
-        <th class='preevent-contact'>Pre-event Contact?</th>
-        <th class='preevent-operating-system'>Operating System</th>
-        <th class='attendee-waitlisted'>Waitlisted</th>
-	<!-- Mentor only fields -->
         <th class='availability'>Available all day?</th>
         <th class='availability-info'>Constraints</th>
         <th class='volunteer_training'>Training?</th>
         <th class='volunteer_projects'>Possible projects</th>
+        <th class='activity intro'>Intro Activity</th>
+        <th class='activity_tools'>Tools Activity</th>
+        <th class='activity_git'>Git/Github Activity</th>
+        <th class='activity_panel'>Career Panel</th>
+        <th class='activity_workshop'>Contributions Workshop</th>
       </tr>
     </thead>
     <tbody>
-      <% @rsvps.each do |rsvp| %>
+      <% @event.volunteer_rsvps.each do |rsvp| %>
         <tr>
-          <!-- Fields for all -->
           <td>
             <%= render 'shared/viewed_gravatars', :email => rsvp.user.email %>
             <%= link_to rsvp.user.full_name, user_profile_path(rsvp.user) %>
           </td>
-          <td data-label="Attending as:"><%= rsvp.role.title %></td>
-          <%= content_tag_maybe_hidden(:td, rsvp.dietary_info, 'data-label' => 'Dietary info:') %>
           <td data-label="Job details:"><%= rsvp.job_details %></td>
           <td data-label="Gender:"><%= rsvp.user.gender %></td>
-          <!-- Student only fields -->
-          <%= content_tag_maybe_hidden(:td, rsvp.preevent_contact, 'data-label' => 'Pre-event contact:') %>
-          <%= content_tag_maybe_hidden(:td, rsvp.operating_system.name, 'data-label' => 'Operating system:') %>
-          <td data-label="Waitlisted?:"><%= if rsvp.waitlist_position then "yes" else "no" end %></td>
-	  <!-- Mentor only fields -->
           <%= content_tag_maybe_hidden(:td, rsvp.availability, 'data-label' => 'Availability:') %>
           <%= content_tag_maybe_hidden(:td, rsvp.availability_info, 'data-label' => 'Availability info:') %>
           <%= content_tag_maybe_hidden(:td, rsvp.volunteer_training, 'data-label' => 'Training:') %>
           <%= content_tag_maybe_hidden(:td, rsvp.volunteer_projects, 'data-label' => 'Projects:') %>
+          <td data-label="Intro Activity:"><%= rsvp.activity_intro %></td>
+          <td data-label="Tools Activity:"><%= rsvp.activity_tools %></td>
+          <td data-label="Git Activity:"><%= rsvp.activity_git %></td>
+          <td data-label="Panel Activity:"><%= rsvp.activity_panel %></td>
+          <td data-label="Workshop Activity:"><%= rsvp.activity_workshop %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+<% end %>
+
+
+<h2>Student RSVP Details</h2>
+<% if @event.student_rsvps.empty? %>
+	<p>There are no students signed up yet.</p>
+<% else %>
+
+  <table class="datatable table table-striped table-bordered table-condensed attendees responsive-table">
+    <thead>
+      <tr>
+        <th class='attendee-name'>Name</th>
+        <th class='attendee-dietary-info'>Dietary Info</th>
+        <th class='attendee-job-details'>Details</th>
+        <th class='attendee-gender'>Gender</th>
+        <th class='preevent-contact'>Pre-event Contact?</th>
+        <th class='preevent-operating-system'>Operating System</th>
+        <th class='attendee-waitlisted'>Waitlisted</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @event.student_rsvps.each do |rsvp| %>
+        <tr>
+          <td>
+            <%= render 'shared/viewed_gravatars', :email => rsvp.user.email %>
+            <%= link_to rsvp.user.full_name, user_profile_path(rsvp.user) %>
+          </td>
+          <%= content_tag_maybe_hidden(:td, rsvp.dietary_info, 'data-label' => 'Dietary info:') %>
+          <td data-label="Job details:"><%= rsvp.job_details %></td>
+          <td data-label="Gender:"><%= rsvp.user.gender %></td>
+          <%= content_tag_maybe_hidden(:td, rsvp.preevent_contact, 'data-label' => 'Pre-event contact:') %>
+          <%= content_tag_maybe_hidden(:td, rsvp.operating_system.name, 'data-label' => 'Operating system:') %>
+          <td data-label="Waitlisted?:"><%= if rsvp.waitlist_position then "yes" else "no" end %></td>
           </tr>
         <% end %>
       </tbody>

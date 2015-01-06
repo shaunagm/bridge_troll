@@ -7,7 +7,6 @@
     <%= render 'shared/model_error_messages', model: @rsvp %>
 
     <% if @rsvp.role_student? %>
-
       <div class="field">
 	<p class="question">How familiar are you with open source?</p>
         <p>This questions helps us plan the workshop and make sure we're meeting everyone's
@@ -27,61 +26,31 @@ needs. Don't worry too much about picking the right level - you'll be able to pa
       <div class="field question">
         <%= f.check_box :preevent_contact %> I would like to be introduced to open source mentors and projects before the event.
       </div>
-
     <% end %>
 
     <% if @rsvp.role_volunteer? %>
-
-	<div class="field checkbox">
- 		<%= f.label :availability, class: 'checkbox question' do %>
-        		<%= f.check_box :availability %> Will you be available for the full event?
-      		<% end %>
-    	</div>
-
-        <div class="field question">
-            <%= f.input :availability_info, as: :text, label: "If you will not be available for the full event, please tell us about your scheduling constraints." %>
-    	</div>
-
-	<p class="question">Tell us about your experience with open source.</p>
-      <%= f.input :subject_experience, as: :text, label: "This can be as a professional, hobbyist or student, and can encompass all kind of contributions, not just technical ones.", class: "question", input_html: {
+      <%= f.input :subject_experience, as: :text, label: "Tell us about your experience with open source.", class: "question", input_html: {
         maxlength: Rsvp::MAX_EXPERIENCE_LENGTH,
         rows: 3,
       } %>
 
-	<h2>Specific Activities</h2>
-	<p>To read more about these activities, go <a href="https://openhatch.org/wiki/Open_Source_Comes_to_Campus/Training/Short_Explanations">here</a>.
 	<div class="field">
-		<% [[:activity_intro, 'Are you interested in presenting our Introduction to Open Source activity?'],
-		    [:activity_tools, 'Are you interested in presenting our Open Source Communications Tools activity?'],
-		    [:activity_git, 'Are you interested in leading small groups through our hands-on Git and Github activity?'],
-		    [:activity_panel, 'Are you interested in talking to students about your experiences in open source, on a panel or in small groups?'],
-	  	    [:activity_workshop, 'Are you interested in leading small groups of students to contribute to an open source project?']].each do |activity| %>
-			<p class="question"> <%= activity[1] %><br />
-			<div class="field">
-				<%= f.radio_button activity[0], 'no' %>
-				<%= f.label :activity_git, 'No, I would rather not do this.', :value => 'no' %>
-				<%= f.radio_button activity[0], 'maybe' %>
-				<%= f.label :activity[0], 'Maybe, if you really need someone and/or if I can do an online training.', :value => 'maybe' %>
-				<%= f.radio_button activity[0], 'yes' %>
-				<%= f.label :activity[0], 'Yes, I can do this.', :value => 'yes' %>
-			</div>	
-		<% end %>
-	</div>
-
-        <div class="field question">
-        	<%= f.input :volunteer_projects, as: :text, label: "If you answered yes to the last question above, are there any particular open source projects you'd like to help attendees contribute to?" %>
-        </div>
-
-	<div class="field checkbox">
- 		<%= f.label :mentor_training, class: 'checkbox question' do %>
-        		<%= f.check_box :volunteer_training %> OpenHatch offers optional, online mentor trainings. Would you like to participate? 
+ 		<%= f.label :availability, class: 'checkbox question' do %>
+        		<%= f.check_box :needs_childcare %> Will you be available for the full event?
       		<% end %>
-		<p>(To sign up for trainings, you'll need to follow <a href="http://discourse.openhatch.org/t/mentor-trainings/33">this forum thread</a>.)</p>
     	</div>
 
+        <div class="field<%= ' hidden' unless f.object.availability? %>">
+    	 	<%= f.label :availability_info, "Please tell us about your scheduling constraints." %>
+      		<%= f.text_area :availability_info, rows: 3, class: "input-xxlarge" %>
+    	</div>
+
+
+
+
+      
      <% unless @rsvp.event.course.blank? %>
 
-    <div class="field<%= ' hidden' %>">
         <p class="question">Would you prefer to teach or TA? (Checking neither means you'd prefer to do something else entirely)</p>
         <div class="checkbox">
           <%= f.label :teaching, class: 'checkbox' do %>
@@ -110,7 +79,6 @@ needs. Don't worry too much about picking the right level - you'll be able to pa
             show_no_preference: true
           } %>
         </div>
-	</div>
       <% end %>
     <% end %>
 
