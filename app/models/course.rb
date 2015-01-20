@@ -3,7 +3,7 @@ class Course < ActiveHash::Base
   self.data = [
     {
       id: 1,
-      name: 'OSCTC-full',
+      name: 'OSCTCfull',
       title: 'Open Source Comes to Campus',
       description: 'Our full-day introductory workshop. Typically includes tutorials on topics like open source community norms, issue trackers, IRC and GIt; a career panel; and a contributions workshop where attendees make their first contributions to FOSS projects.',
       levels: [

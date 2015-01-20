@@ -51,7 +51,7 @@ describe RsvpsController do
             job_details: 'Software Engineer'
           })
 
-          rails_event = create(:event, course: Course::RAILS)
+          rails_event = create(:event, course: Course::OSCTCFULL)
           @rails_rsvp = create(:rsvp, {
             user: @user,
             event: rails_event,

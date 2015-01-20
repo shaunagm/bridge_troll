@@ -115,7 +115,7 @@ describe Event do
         time_zone: "Hawaii",
         published: true,
         student_rsvp_limit: 100,
-        course_id: Course::RAILS.id,
+        course_id: Course::OSCTCFULL.id,
         volunteer_details: "I am some details for volunteers.",
         student_details: "I am some details for students.",
         event_sessions_attributes: {

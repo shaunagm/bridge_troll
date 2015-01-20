@@ -76,7 +76,7 @@ module Seeder
       title: 'Seeded Test Event',
       student_rsvp_limit: 5,
       time_zone: 'Pacific Time (US & Canada)',
-      course_id: Course::RAILS.id,
+      course_id: Course::OSCTCFULL.id,
       location: location,
       published: true,
       details: <<-DETAILS.strip_heredoc

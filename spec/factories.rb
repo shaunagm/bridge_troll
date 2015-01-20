@@ -32,7 +32,7 @@ FactoryGirl.define do
     published true
     student_rsvp_limit 100
     location
-    course_id Course::RAILS.id
+    course_id Course::OSCTCFULL.id
     volunteer_details "I am some details for volunteers."
     student_details "I am some details for students."
 
@@ -76,7 +76,7 @@ FactoryGirl.define do
 
     factory :student_rsvp do
       role Role.find_by_title 'Student'
-      operating_system OperatingSystem::OSX_LION
+      operating_system OperatingSystem::WINDOWS
       class_level 2
     end
 
