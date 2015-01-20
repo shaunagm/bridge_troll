@@ -47,10 +47,7 @@ FactoryGirl.define do
     sequence(:name) { |n| "Location #{n}" }
     sequence(:address_1) { |n| "#{n} Street" }
     city "San Francisco"
-    factory :chapter do
-	name "Chapter for location"
-	chapter_description "Dummy"
-    end
+    chapter
   end
 
   factory :chapter do
