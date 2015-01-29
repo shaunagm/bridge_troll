@@ -8,7 +8,7 @@ class SurveysController < ApplicationController
     @survey = Survey.where(rsvp_id: @rsvp.id).first_or_initialize
 
     if @survey.persisted?
-      flash[:error] = "It looks like you've already taken this survey! Email workshops@railsbridge.org with any other feedback you have."
+      flash[:error] = "It looks like you've already taken this survey! Email hello@openhatch.org with any other feedback you have."
     end
   end
 

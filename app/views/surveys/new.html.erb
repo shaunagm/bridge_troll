@@ -8,14 +8,25 @@
 <div class="row">
   <div class="col-md-6" id="survey-form">
     <%= simple_form_for @survey, url: event_rsvp_surveys_path(@event.id, @rsvp.id) do |f| %>
-      <%= f.input :good_things, label: "What was great?" %>
+      <%= f.input :good_things, label: "What was your favorite thing or things about the workshop?" %>
 
-      <%= f.input :bad_things, label: "What could have been better?" %>
+      <%= f.input :bad_things, label: "What was your last favorite thing or things about the workshop?" %>
+
+      <%= f.input :want_to_learn, label: "Is there anything you could wish you could have done, or a topic you wish you could've understood, that we didn't cover or get to?" %>
+
+      <%= f.label :participate_likelihood, "How likely are you to participate in open source in the future?" (10 is very likely, 1 is unlikely)" %>
+      <%= f.select :participate_likelihood, (1..10).to_a.reverse %>
 
       <%= f.input :other_comments, label: "Any other comments?" %>
 
-      <%= f.label :recommendation_likelihood, "How likely are you to recommend a Railsbridge workshop to a friend or colleague? (10 is very likely, 1 is unlikely)" %>
-      <%= f.select :recommendation_likelihood, (1..10).to_a.reverse %>
+      Can we make quotes from this survey public?
+
+	<%= radio_button_tag(:use_quotes, "yes") %>
+	<%= label_tag(:yes_quote, "Yes, and please attribute me.") %>
+	<%= radio_button_tag(:use_quotes, "anonymous") %>
+	<%= label_tag(:anonymous_quote, "Yes, anonymously.") %>
+	<%= radio_button_tag(:use_quotes, "no") %>
+	<%= label_tag(:no_quote, "No, please do not share any quotes.") %>
 
       <%= f.submit "Submit", class: "btn" unless @survey.persisted? %>
     <% end %>
