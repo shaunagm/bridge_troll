@@ -14,16 +14,5 @@
     <% end %>
   </div>
   <div class='col-md-6 login-option'>
-    <h3>Sign in with something else</h3>
-    <ul class='external-auth'>
-      <% OmniauthProviders.provider_data.each do |provider| %>
-        <li>
-          <%= link_to user_omniauth_authorize_path(provider[:key], origin: session["user_return_to"]) do %>
-            <i class='fa <%= provider[:icon] %>'></i>
-            <%= provider[:name] %>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
   </div>
 </div>
