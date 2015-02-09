@@ -150,7 +150,12 @@ needs. Don't worry too much about picking the right level - you'll be able to pa
       <% end %>
     </div>
 
+
+    <% if @rsvp.event.course.id == 2 %>
+    <div class="field<%= ' hidden' %>">
+    <% else %>
     <div class="field">
+    <% end %>
       <p class="question">The food's on us. Let us know if you have any dietary restrictions.</p>
       <%= render partial: 'rsvps/dietary_restrictions', locals: {f: f} %>
     </div>
