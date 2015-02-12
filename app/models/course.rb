@@ -5,7 +5,7 @@ class Course < ActiveHash::Base
       id: 1,
       name: 'OSCTCfull',
       title: 'Open Source Comes to Campus',
-      description: 'Our full-day introductory workshop. Typically includes tutorials on topics like open source community norms, issue trackers, IRC and GIt; a career panel; and a contributions workshop where attendees make their first contributions to FOSS projects.',
+      description: 'Our full-day introductory workshop. Typically includes tutorials on topics like open source community norms, issue trackers, IRC and Git; a career panel; and a contributions workshop where attendees make their first contributions to FOSS projects.',
       levels: [
         {
           level: 1,
@@ -13,7 +13,7 @@ class Course < ActiveHash::Base
           title: "Totally New to Open Source",
           level_description: [
             'You\'ve heard of open source or free software, but don\'t know much about them.',
-            'You\'ve never used IRC, issue trackers or Github.',
+            'You\'ve never used IRC, issue trackers or GitHub.',
 	    'You haven\'t used a command line, or you have, but you\'re not comfortable with it.',
           ]
         }, {
@@ -48,7 +48,7 @@ class Course < ActiveHash::Base
           title: "Totally New to Open Source",
           level_description: [
             'You\'ve heard of open source or free software, but don\'t know much about them.',
-            'You\'ve never used IRC, issue trackers or Github.',
+            'You\'ve never used IRC, issue trackers or GitHub.',
 	    'You haven\'t used a command line, or you have, but you\'re not comfortable with it.',
           ]
         }, {
