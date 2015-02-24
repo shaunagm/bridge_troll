@@ -82,7 +82,7 @@ describe "the event listing page" do
 
       it "can create a new course" do
         fill_in "Title", with: "February Workshop"
-        select "Ruby on Rails", :from => "event_course_id"
+        select "Open Source Comes to Campus", :from => "event_course_id"
         fill_in "Student RSVP limit", with: 100
 
         within ".event-sessions" do
@@ -104,7 +104,7 @@ describe "the event listing page" do
         page.should_not have_css '.details script'
         page.should have_content("1/12/2055")
         page.should have_css(".details p", text: 'With a new line!')
-        page.should have_content("This is a Ruby on Rails event. The focus will be on developing functional web apps and programming in Ruby.")
+        page.should have_content("Our full-day introductory workshop.")
 
         visit events_path
 
@@ -140,7 +140,7 @@ describe "the event listing page" do
         click_link "Organize Event"
 
         fill_in "Title", with: "March Event"
-        select "Front End", :from => "event_course_id"
+        select "Introduction to Open Source Contributing for Sprints, Hackathons, and other Events", :from => "event_course_id"
         fill_in "Student RSVP limit", with: 100
 
         within ".event-sessions" do
@@ -153,7 +153,7 @@ describe "the event listing page" do
         check("coc")
         click_button "Create Event"
 
-        page.should have_content("This is a Front End workshop. The focus will be on")
+        page.should have_content("This short introductory workshop goes over")
       end
     end
 
@@ -216,7 +216,7 @@ describe "the event listing page" do
         click_link("Attend as a student")
         page.should have_content("almost signed up")
 
-        choose "Windows 8"
+        choose "Windows"
         fill_in "rsvp_job_details", :with => "I am an underwater basket weaver."
         choose "rsvp_class_level_1"
 
@@ -226,7 +226,7 @@ describe "the event listing page" do
         rsvp = Rsvp.last
         rsvp.user_id.should == @user.id
         rsvp.event_id.should == @event.id
-        rsvp.operating_system.should == OperatingSystem::WINDOWS_8
+        rsvp.operating_system.should == OperatingSystem::WINDOWS
 
         rsvp.rsvp_sessions.length.should == 2
       end

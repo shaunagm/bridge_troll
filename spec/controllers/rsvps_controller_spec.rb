@@ -42,7 +42,7 @@ describe RsvpsController do
 
       describe "when the user has previously volunteered" do
         before do
-          frontend_event = create(:event, course: Course::FRONTEND)
+          frontend_event = create(:event, course: Course::OSCTCSPRINT)
           @frontend_rsvp = create(:rsvp, {
             user: @user,
             event: frontend_event,

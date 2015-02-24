@@ -151,7 +151,7 @@ needs. Don't worry too much about picking the right level - you'll be able to pa
     </div>
 
 
-    <% if @rsvp.event.course.id == 2 %>
+    <% if @rsvp.event.course.try(:id) == 2 %>
     <div class="field<%= ' hidden' %>">
     <% else %>
     <div class="field">

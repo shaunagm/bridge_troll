@@ -19,19 +19,6 @@ describe 'creating or editing an rsvp' do
         page.should_not have_content(@event.event_sessions.first.name)
       end
 
-      it "allows user to toggle childcare info with the needs_childcare button", js: true do
-        page.find("#rsvp_needs_childcare").should_not be_checked
-        page.should have_field('rsvp_childcare_info', visible: false)
-
-        page.check "rsvp_needs_childcare"
-
-        page.should have_field('rsvp_childcare_info', visible: true)
-
-        page.uncheck "rsvp_needs_childcare"
-
-        page.should have_field('rsvp_childcare_info', visible: false)
-      end
-
       it "should show option for any class level" do
         page.should have_content no_preference_text
       end
@@ -44,7 +31,7 @@ describe 'creating or editing an rsvp' do
         before do
           fill_in "rsvp_subject_experience", with: "asdfasdfasdfasd"
           fill_in "rsvp_teaching_experience", with: "asdfasdfasdfasd"
-          choose Course.find_by_name('RAILS').levels[0][:title]
+          choose Course.find_by_name('OSCTCfull').levels[0][:title]
         end
 
         it "should allow the user to update their gender" do
@@ -109,25 +96,6 @@ describe 'creating or editing an rsvp' do
       end
     end
 
-    context "given an rsvp with childcare info" do
-      before do
-        @rsvp = create(:rsvp, user: @user, childcare_info: "Bobbie: 17, Susie: 20000007")
-        visit edit_event_rsvp_path @rsvp.event, @rsvp
-      end
-
-      it "allows user to toggle childcare info with the needs_childcare button", js: true do
-        page.find("#rsvp_needs_childcare").should be_checked
-        page.find("#rsvp_childcare_info").should have_text(@rsvp.childcare_info)
-
-        page.uncheck "rsvp_needs_childcare"
-        page.should have_field('rsvp_childcare_info', visible: false)
-
-        page.check "rsvp_needs_childcare"
-
-        page.find("#rsvp_childcare_info").should have_text(@rsvp.childcare_info)
-      end
-    end
-
     context 'given an rsvp with dietary restrictions' do
       let(:rsvp) {
         create(:rsvp,
@@ -152,15 +120,15 @@ describe 'creating or editing an rsvp' do
     describe "a new learn rsvp" do
       it "should show rails levels for rails events" do
         visit learn_new_event_rsvp_path(@event)
-        page.should have_content Course.find_by_name('RAILS').levels[0][:title]
+        page.should have_content Course.find_by_name('OSCTCfull').levels[0][:title]
       end
 
       it "should show frontend levels for frontend events" do
-        @event.update_attributes(:course_id => Course::FRONTEND.id)
+        @event.update_attributes(:course_id => Course::OSCTCFULL.id)
         @event.save!
 
         visit learn_new_event_rsvp_path(@event)
-        page.should have_content Course.find_by_name('FRONTEND').levels[0][:title]
+        page.should have_content Course.find_by_name('OSCTCfull').levels[0][:title]
       end
 
       it "should not allow students to have 'No preference'" do

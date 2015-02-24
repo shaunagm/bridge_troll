@@ -43,28 +43,28 @@ describe "sign in lightbox" do
       end
     end
 
-    context "with omniauth" do
-      let(:facebook_response) { OmniauthResponses.facebook_response }
+#    context "with omniauth" do
+#      let(:facebook_response) { OmniauthResponses.facebook_response }
 
-      before do
-        OmniAuth.config.test_mode = true
-        OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new(facebook_response)
-        @user.authentications.create(provider: :facebook, uid: facebook_response[:uid])
-      end
+#      before do
+#        OmniAuth.config.test_mode = true
+#        OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new(facebook_response)
+#        @user.authentications.create(provider: :facebook, uid: facebook_response[:uid])
+#      end
 
-      it "always returns the user to the current page, instead of the last path Devise remembers" do
-        within ".navbar" do
-          click_on 'Sign In'
-        end
+#      it "always returns the user to the current page, instead of the last path Devise remembers" do
+#        within ".navbar" do
+#          click_on 'Sign In'
+#        end
 
-        within "#sign_in_dialog" do
-          click_on 'Facebook'
-        end
+#        within "#sign_in_dialog" do
+#          click_on 'Facebook'
+#        end
 
-        page.should have_content('Facebook login successful')
-        page.should have_content('About RailsBridge')
-      end
-    end
+ #       page.should have_content('Facebook login successful')
+ #       page.should have_content('About RailsBridge')
+ #     end
+ #   end
   end
 end
 

@@ -14,7 +14,7 @@
 
       <%= f.input :want_to_learn, label: "Is there anything you could wish you could have done, or a topic you wish you could've understood, that we didn't cover or get to?" %>
 
-      <%= f.label :participate_likelihood, "How likely are you to participate in open source in the future?" (10 is very likely, 1 is unlikely)" %>
+      <%= f.label :participate_likelihood, "How likely are you to participate in open source in the future? (10 is very likely, 1 is unlikely)" %>
       <%= f.select :participate_likelihood, (1..10).to_a.reverse %>
 
       <%= f.input :other_comments, label: "Any other comments?" %>

@@ -44,7 +44,7 @@ describe "the individual event page" do
     end
 
     describe "course section" do
-      let(:chosen_course_text) { "The focus will be on " }
+      let(:chosen_course_text) { "Typically includes tutorials on topics like" }
 
       context "when a course is chosen" do
         it "displays a course and has a link to get the course level descriptions" do

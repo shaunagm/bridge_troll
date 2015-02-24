@@ -22,13 +22,13 @@ describe "the organizer dashboard" do
   it "lets the user preview the student RSVP page" do
     visit event_organizer_tools_path(@event)
     click_link "Preview Student RSVP Form"
-    page.should have_content("Operating System")
+    page.should have_content("You're almost signed up! We just have a few questions...")
   end
 
   it "lets the user preview the volunteer RSVP page" do
     visit event_organizer_tools_path(@event)
     click_link "Preview Volunteer RSVP Form"
-    page.should have_content("Volunteer Preferences")
+    page.should have_content("Specific Activities")
   end
 
   it "lets the user assign students and volunteers to sections" do
@@ -63,7 +63,12 @@ describe "the organizer dashboard" do
     csv_contents.should include("Student Name")
     csv_contents.should include("Class Level")
     csv_contents.should include("Operating System")
-    csv_contents.should include("Occupation")
+    csv_contents.should include("Details")
+    csv_contents.should include("Gender")
+    csv_contents.should include("DietaryInfo")
+    csv_contents.should include("Pre-event contact")
+    csv_contents.should include("Potential Projects")
+    csv_contents.should include("Waitlisted")
   end
 
   it "lets the user check in attendees", js: true do

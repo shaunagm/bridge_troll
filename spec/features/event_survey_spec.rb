@@ -18,13 +18,13 @@ describe 'the post-workshop survey' do
         expect(page).to have_content "How was #{@event.title}"
 
         within("#survey-form") do
-          expect(page).to have_content "What was great?"
+          expect(page).to have_content "What was your favorite thing or things about the workshop?"
           expect(page).to have_button "Submit"
         end
       end
 
       it 'should take you home on submit' do
-        fill_in 'What was great?', with: "Hotdogs"
+        fill_in 'What was your favorite thing or things about the workshop?', with: "Hotdogs"
         click_button 'Submit'
 
         expect(page).to have_content "Thanks for taking the survey!"
@@ -33,7 +33,7 @@ describe 'the post-workshop survey' do
 
     context 'with an already-taken survey' do
       before do
-        fill_in 'What was great?', with: "Hotdogs"
+        fill_in 'What was your favorite thing or things about the workshop?', with: "Hotdogs"
         click_button 'Submit'
         visit new_event_rsvp_survey_path(@event, @rsvp)
       end
